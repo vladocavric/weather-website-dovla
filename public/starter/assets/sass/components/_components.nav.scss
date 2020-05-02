@@ -1,0 +1,19 @@
+nav {
+	background: $secondary-green;
+	display: flex;
+
+	ul {
+		list-style-type: none;
+		border: 1px slid $white;
+
+		a {
+			text-decoration: none;
+			padding: 15px;
+			color: $white;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}

@@ -1,0 +1,15 @@
+.not-found {
+	text-align: center;
+
+	.page-title {
+		display: none;
+	}
+
+	img {
+		width: 100%;
+	}
+}
+
+.page-not-found-message {
+	color: $orange-404;
+}
