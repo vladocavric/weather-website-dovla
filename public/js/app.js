@@ -35,19 +35,19 @@ weatherForm.addEventListener('submit', (e) => {
     fetch('/weather?address=' + location).then((response) => {
         response.json().then((data) => {
             if (data.error) {
-                console.log(data.error);
+                // console.log(data.error);
                 message1.textContent = data.error;
             } else if (data.geoData) {
-                console.log((data.geoData))
+                // console.log((data.geoData))
                 message1.textContent = ''
                 message2.textContent = data.geoData;
             } else {
-                console.log(data.forcast);
-                console.log(data.city2)
+                // console.log(data.forcast);
+                // console.log(data.city2)
                 let city = data.city2;
-                message2.innerHTML = `In <span id="city">${city}</span> temperature is <span id="temp">${data.forcast.temp}
-                </span>&deg;C and it feeles like <span id="feeles-like">${data.forcast.feels_like}</span>&deg;C`;
-                message1.textContent = ''
+                message2.innerHTML = `In <span id="city">${city}</span> temperature is <span id="temp">${Math.round(data.forcast.temp)}
+                </span>&deg;C and it feeles like <span id="feeles-like">${Math.round(data.forcast.feels_like)}</span>&deg;C`;
+                message1.textContent = '';
             }
         })
     })

@@ -118,7 +118,7 @@ app.get('*', (req, res) => {
 
 //=================================================================
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3005;
 console.log(port)
 app.listen(port, (err) => {
     if (err) {
