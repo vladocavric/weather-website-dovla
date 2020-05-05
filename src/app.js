@@ -81,10 +81,18 @@ app.get('/weather', (req, res) => {
             forecast(geoData.lat, geoData.lon, (err, data) => {
                 if (err) {
                     res.send(err)
-                } else if (data.main) {
-                    res.send({forcast: data.main, city: data.name, city2: geoData.city, address: req.query.address})
+                } else if (data) {
+                    res.send({
+                        forcast: data.data.body.main,
+                        city: data.data.name,
+                        city2: geoData.city,
+                        address: req.query.address,
+                        url: data.smallUrl
+                    })
+                    
                 } else {
                     res.send({geoData})
+                    // console.log(geoData)
                 }
             })
         }

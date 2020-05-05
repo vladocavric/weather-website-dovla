@@ -6,6 +6,7 @@ const geocode = (place, callback) => {
         if (err) {
             callback(err, undefined)
         } else if (res.body.features.length === 0) {
+            // console.log('we did not find pelace withi this name')
             callback(undefined, 'we did not find pelace withi this name')
         } else {
             const geoData = {
