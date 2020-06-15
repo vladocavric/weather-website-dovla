@@ -56,6 +56,35 @@ app.get('/about', (req, res) => {
     })
 });
 
+app.get('/weatherfromcords', (req, res) => {
+    const lat = req.query.lat
+    const lon = req.query.lon
+    if (!req.query.lat || !req.query.lon) {
+        return res.send({
+            error: 'You mast provide a latitude and longitude'
+        })
+    }
+    forecast(lat, lon, (err, data) => {
+        if (err) {
+            res.send(err)
+        } else if (data) {
+            res.send({
+              
+                forcast: data.data.body.main,
+                city: data.data.body.name,
+                // city2: geoData.city,
+                // address: req.query.address,
+                url: data.smallUrl
+            })
+            
+        } else {
+            res.send({geoData})
+            // console.log(geoData)
+        }
+    })
+
+});
+
 app.get('/weather', (req, res) => {
     // let forcast = {
     //     temp: 26,
@@ -84,7 +113,7 @@ app.get('/weather', (req, res) => {
                 } else if (data) {
                     res.send({
                         forcast: data.data.body.main,
-                        city: data.data.name,
+                        city: data.data.body.name,
                         city2: geoData.city,
                         address: req.query.address,
                         url: data.smallUrl
